@@ -1,1 +1,14 @@
 <h1>Your Score is <%= @score %> </h1>
+<% if @change == 1 %>
+	<h2>Congratulations! You made a New High Score</h2>
+	<% end %> 
+
+<h2>
+	<form   action="/quizzes/questions" method="POST">
+	<button class = "btn btn-primary" type="submit" name="category" value="<%= @category_id %>">Play Again</button>
+</form>
+<br>
+<form   action="/quizzes/category" >
+	<button class = "btn btn-primary" >Change Category</button>
+</form>
+</h2>

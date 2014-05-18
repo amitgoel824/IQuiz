@@ -1,32 +1,50 @@
+<html>
+<head>
+</head>
+
+<body>
+
+<h1><%= Category.find(@category_id).name %> Quiz</h1>
+
+
 <form action = "/quizzes/score" method="POST">
 
-<h1>Part 1 (10 points each)</h1>
-<% @questions1.each_with_index do |question, index| %>
-  
-  <%= question.statement%> <br>
+    <h3>10 points each</h3>
+    <h2>Part-1 </h2>
+
+    <% @questions1.each_with_index do |question, index| %>
+
+    <p>Question<%= index + 1%>: <%= question.statement%> </p>
     <input type="radio" name= "ans<%= index + 1%>" value= 1 ><%= question.option1 %><br>
     <input type="radio" name= "ans<%= index + 1%>" value= 2 ><%= question.option2 %><br>
     <input type="radio" name= "ans<%= index + 1%>" value= 3 ><%= question.option3 %><br>
-    <input type="radio" name= "ans<%= index + 1%>" value= 4 ><%= question.option3 %><br>
+    <input type="radio" name= "ans<%= index + 1%>" value= 4 ><%= question.option4 %><br>
     <input type = "hidden" name="answer<%= index + 1%>" value = "<%= @answers[index] %>" >
     <hr>
-  
-<% end %>
 
-<h1>Part 2 (20 points each)</h1>
-<% @questions2.each_with_index do |question, index| %>
-  
-  <%= question.statement%> <br>
+    <% end %>
+
+    <h3>20 points each</h3>
+    <h2>Part-2 </h2>
+
+    <% @questions2.each_with_index do |question, index| %>
+
+    <p>Question<%= index + 1+ @number_of_questions_part1 %>: <%= question.statement%> </p>
     <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 1 ><%= question.option1 %><br>
     <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 2 ><%= question.option2 %><br>
     <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 3 ><%= question.option3 %><br>
     <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 4 ><%= question.option4 %><br>
     <input type = "hidden" name="answer<%= index + 1 + @number_of_questions_part1 %>" value = "<%= @answers[index + @number_of_questions_part1 ] %>" >
     <hr>
-  
-<% end %>
+
+    <% end %>
 
 
-<input type = "hidden" name="category" value = "<%= @category_id %>" >
-<input type="submit" value="Submit">
+    <input type = "hidden" name="category" value = "<%= @category_id %>" >
+    <h2>
+        <input class = "btn btn-primary"type="submit" value="Submit">
+    </h2>
 </form>
+
+</body>
+</html>

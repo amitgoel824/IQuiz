@@ -15,7 +15,68 @@
  */
 
 
-body { padding-top: 100px; }
+body { padding-top: 100px;background-color:#FFFFCC; }
 footer { margin-top: 100px; }
-table, td, th { vertical-align: middle; border: none; }
+header{background-color:#FFFFCC;}
 th { border-bottom: 1px solid #DDD; }
+h1{color: green}
+h2 {
+  color:#232323;
+  font-style:italic;
+  font-weight:500;
+  letter-spacing:-1px;
+  line-height:1.1em;
+  margin:30px 0;
+  text-align:center;
+  font-size:30px;
+} 
+h3 {
+  color:#232323;
+  text-align:right;
+  font-size:20px;
+} 
+table { 
+color: #333; /* Lighten up font color */
+font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+width: 640px; 
+border-collapse: 
+collapse; border-spacing: 0; 
+}
+
+td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+
+th {
+background: #F3F3F3; /* Light grey background */
+font-weight: bold; /* Make sure they're bold */
+text-align: center;
+}
+
+td {
+background: #FAFAFA; /* Lighter grey background */
+text-align: center; /* Center our text */
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+
+  .button
+{
+background-color:#CCFFCC;
+border-left:4px solid #d9522c;
+color:white;
+}
+
+
+
+#submit {
+ color: #CCFFCC;
+ font-size: 0;
+ width: 135px;
+ height: 60px;
+ border: none;
+ margin: 0;
+ padding: 0;
+ background: #0c0 url(image) 0 0 no-repeat; 
+}

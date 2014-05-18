@@ -1,10 +1,9 @@
-<h1>Choose a Category</h1>
-
-
-
+<h2>Choose a Category</h2>
+<h2>
 <% @categories.each do |category| %>
-<form action="/quizzes/questions" method="POST">
-	<button type="submit" name="category" value="<%= category.id %>"></button>
+<form   action="/quizzes/questions" method="POST">
+	<button class = "btn btn-primary" type="submit" name="category" value="<%= category.id %>"><%=category.name%></button>
 </form>
 <br>
 <% end %>
+</h2>

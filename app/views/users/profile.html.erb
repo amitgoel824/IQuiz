@@ -3,16 +3,23 @@
 <h2>High Scores</h2>
 
 
-<table>
+<table class="center">
 	<tbody>
+		<tr>
+			<th>Category</th>
+			<th>High Score</td>
+		</tr>
 		<% @categories.each_with_index do |category,index| %>
 		<tr>
-			<th scope="row"><%= category.name %></th>
+			<td><%= category.name %></th>
 			<td><%= @myscores[index] %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 
-
-<%= link_to 'Take a Quiz', quizzes_category_path %> 
+<h2>
+	<form   action="/quizzes/category" >
+	<button class = "btn btn-primary" >Take a Quiz</button>
+</form>
+</h2>
