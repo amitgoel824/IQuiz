@@ -1,0 +1,10 @@
+<h1>Choose a Category</h1>
+
+
+
+<% @categories.each do |category| %>
+<form action="/quizzes/questions" method="POST">
+	<button type="submit" name="category" value="<%= category.id %>"></button>
+</form>
+<br>
+<% end %>

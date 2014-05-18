@@ -1,0 +1,18 @@
+<h1>User <%= @user.id %> </h1>
+
+<h2>High Scores</h2>
+
+
+<table>
+	<tbody>
+		<% @categories.each_with_index do |category,index| %>
+		<tr>
+			<th scope="row"><%= category.name %></th>
+			<td><%= @myscores[index] %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+<%= link_to 'Take a Quiz', quizzes_category_path %> 
