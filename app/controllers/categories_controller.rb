@@ -68,7 +68,7 @@ class CategoriesController < ApplicationController
     def check_admin
       @user = current_user
       if @user.admin == false
-        redirect_to users_profile_path, flash: {alert: "You don't have the permissions to visit the page you are trying to}"
+        redirect_to users_profile_path, flash: {alert: "You don't have the permissions to visit the page you are trying to"}
       end
     end
     # Use callbacks to share common setup or constraints between actions.
