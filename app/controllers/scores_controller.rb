@@ -1,4 +1,5 @@
 class ScoresController < ApplicationController
+  before_action :check_admin
   before_action :set_score, only: [:show, :edit, :update, :destroy]
 
   # GET /scores
@@ -62,6 +63,14 @@ class ScoresController < ApplicationController
   end
 
   private
+
+  #Checking if the current user is an admin
+    def check_admin
+      @user = current_user
+      if @user.admin == false
+        redirect_to users_profile_path, flash: {alert: "You don't have the permissions to visit the page you are trying to}
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_score
       @score = Score.find(params[:id])

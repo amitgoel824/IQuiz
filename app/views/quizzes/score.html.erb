@@ -1,3 +1,4 @@
+
 <h1>Your Score is <%= @score %> </h1>
 <% if @change == 1 %>
 	<h2>Congratulations! You made a New High Score</h2>
@@ -5,6 +6,7 @@
 
 <h2>
 	<form   action="/quizzes/questions" method="POST">
+		<!-- <input type = "hidden" name="category" value = "<%= @category_id %>" > -->
 	<button class = "btn btn-primary" type="submit" name="category" value="<%= @category_id %>">Play Again</button>
 </form>
 <br>

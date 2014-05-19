@@ -1,0 +1,25 @@
+
+<h2>Answers</h2>
+
+<form action = "/quizzes/score" method="POST">
+
+	<% @questions.each_with_index do |question, index| %>
+
+	<p>Question<%= index + 1%>: <%= question.statement%> </p>
+	<p>1) <%= question.option1 %></p>
+	<p>2) <%= question.option2 %></p>
+	<p>3) <%= question.option3 %></p>
+	<p>4) <%= question.option4 %></p>
+	<p>Answer: Option <%= question.answer %></p>
+	<hr>
+
+	<% end %>
+
+	
+	<input type = "hidden" name="score" value = "<%= @score %>" >
+	<input type = "hidden" name="change" value = "<%= @change %>" >
+	<input type = "hidden" name="category" value = "<%= @category_id %>" >
+	<h2>
+		<input class = "btn btn-primary" type="submit" value="Check Your Score">
+	</h2>
+</form>

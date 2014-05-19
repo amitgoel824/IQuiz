@@ -7,7 +7,7 @@
 <h1><%= Category.find(@category_id).name %> Quiz</h1>
 
 
-<form action = "/quizzes/score" method="POST">
+<form action = "/quizzes/answers" method="POST">
 
     <h3>10 points each</h3>
     <h2>Part-1 </h2>
@@ -19,7 +19,8 @@
     <input type="radio" name= "ans<%= index + 1%>" value= 2 ><%= question.option2 %><br>
     <input type="radio" name= "ans<%= index + 1%>" value= 3 ><%= question.option3 %><br>
     <input type="radio" name= "ans<%= index + 1%>" value= 4 ><%= question.option4 %><br>
-    <input type = "hidden" name="answer<%= index + 1%>" value = "<%= @answers[index] %>" >
+    <input type = "hidden" name="answer<%=index+1%>" value = "<%= question.answer %>" >
+    <input type = "hidden" name="question_id<%=index+1%>" value = "<%= question.id %>" >
     <hr>
 
     <% end %>
@@ -34,7 +35,8 @@
     <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 2 ><%= question.option2 %><br>
     <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 3 ><%= question.option3 %><br>
     <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 4 ><%= question.option4 %><br>
-    <input type = "hidden" name="answer<%= index + 1 + @number_of_questions_part1 %>" value = "<%= @answers[index + @number_of_questions_part1 ] %>" >
+    <input type = "hidden" name="answer<%=index+1 + @number_of_questions_part1%>" value = "<%= question.answer %>" >
+    <input type = "hidden" name="question_id<%=index+1 + @number_of_questions_part1%>" value = "<%= question.id %>" >
     <hr>
 
     <% end %>
@@ -42,7 +44,7 @@
 
     <input type = "hidden" name="category" value = "<%= @category_id %>" >
     <h2>
-        <input class = "btn btn-primary"type="submit" value="Submit">
+        <input class = "btn btn-primary"type="submit" value="View Answers">
     </h2>
 </form>
 

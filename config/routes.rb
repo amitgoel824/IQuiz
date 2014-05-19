@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   match "quizzes/score" => "quizzes#score" , via: [:get, :post]
 
+  match "quizzes/answers" => "quizzes#answers" , via: [:get, :post]
+
   get 'users/new'
 
   get 'users/profile'
