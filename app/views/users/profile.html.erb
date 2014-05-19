@@ -1,25 +1,35 @@
-<h1><%= @user.name %> </h1>
 
-<h2>High Scores</h2>
+<html>
+<body>
+	<h1><%= @user.name %> </h1>
+	<h2>High Scores </h2>
 
 
-<table class="center">
-	<tbody>
-		<tr>
-			<th>Category</th>
-			<th>High Score</td>
-		</tr>
-		<% @categories.each_with_index do |category,index| %>
-		<tr>
-			<td><%= category.name %></th>
-			<td><%= @myscores[index] %></td>
-		</tr>
+	<table class="center">
+		<tbody>
+			<tr>
+				<th>Category</th>
+				<th>High Score</th>
+			</tr>
+			<% @categories.each_with_index do |category,index| %>
+			<tr>
+				<td><%= category.name %></td>
+				<td><%= @myscores[index] %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<h2>
+		<form   action="/quizzes/category" >
+			<button class = "btn btn-primary" >Take a Quiz</button>
+		</form>
+
+		<% if @user.admin %>
+		<form   action="/questions/new" >
+			<button class = "btn btn-primary" >Add Questions</button>
+		</form>
 		<% end %>
-	</tbody>
-</table>
-
-<h2>
-	<form   action="/quizzes/category" >
-	<button class = "btn btn-primary" >Take a Quiz</button>
-</form>
-</h2>
+	</h2>
+</body>
+</html>

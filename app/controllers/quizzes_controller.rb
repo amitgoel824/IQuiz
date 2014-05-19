@@ -46,14 +46,15 @@ class QuizzesController < ApplicationController
 
     #Array of selected answers
     @user_answers = [params[:ans1],params[:ans2],params[:ans3],params[:ans4],params[:ans5]]
-    @real_answers = [params[:answer1],params[:answer2],params[:answer3],params[:answer4],params[:answer5]]
+    @user_answers = @user_answers.map {|x| x.to_i}
+    #@real_answers = [params[:answer1],params[:answer2],params[:answer3],params[:answer4],params[:answer5]]
 
     # Calculation of score
     for i in 1..@number_of_questions_part1
-      @score = @score + 10 if @user_answers[i-1] == @real_answers[i-1]
+      @score = @score + 10 if @user_answers[i-1] == @questions[i-1].answer
     end
     for i in 1..@number_of_questions_part2
-      @score = @score + 20 if @user_answers[i-1 +@number_of_questions_part1] == @real_answers[i-1 +@number_of_questions_part1]
+      @score = @score + 20 if @user_answers[i-1 +@number_of_questions_part1] == @questions[i-1 +@number_of_questions_part1].answer
     end
     #Current high-score of user in selected category
     @temp = Score.find_by_user_id_and_category_id(@user_id,@category_id)
@@ -70,7 +71,7 @@ class QuizzesController < ApplicationController
     set_up_instance_variables
 
     @score = params[:score]
-    @change = params[:change]
+    @change = params[:change].to_i
     
     
   end
@@ -89,22 +90,7 @@ class QuizzesController < ApplicationController
     @number_of_questions_part1 = 3
     @number_of_questions_part2 = 2
 
-    # #Selecting questions randomly from chosen category
-    # @questions1 = Question.where(category_id: @category_id, stars: 1).order("RANDOM()").sample(@number_of_questions_part1)
-    # @questions2 = Question.where(category_id: @category_id, stars: 2).order("RANDOM()").sample(@number_of_questions_part2)
-    # @count = @questions1.count
-
-    # # Storing the answers in an array
-    # @answers = Array.new(@number_of_questions_part1 + @number_of_questions_part2)
-    # @answers1 = Array.new(@questions1)
-    # @questions1.each_with_index do |question,index|
-    #   @answers1[index] = question.id
-    # end 
-    # @answers2 = Array.new(@questions2)
-    # @questions2.each_with_index do |question,index|
-    #   @answers2[index] = question.id
-    # end
-    # @answers = @answers1 + @answers2
+    
 
   end
 end
