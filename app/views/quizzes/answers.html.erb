@@ -1,9 +1,26 @@
+<h1>Your Score is <%= @score %></h1>
+<% if @change == 1 %>
+	Congratulations! You made a New High Score
+	<% end %> 
+
+<h2>
+	<form   action="/quizzes/questions" method="POST">
+		<!-- <input type = "hidden" name="category" value = "<%= @category_id %>" > -->
+	<button class = "btn btn-primary" type="submit" name="category" value="<%= @category_id %>">Play Again</button>
+</form>
+<br>
+<form   action="/quizzes/category" >
+	<button class = "btn btn-primary" >Change Category</button>
+</form>
+</h2>
+
+
+
 
 <h2>Answers</h2>
 
-<form action = "/quizzes/score" method="POST">
 
-	<% @questions.each_with_index do |question, index| %>
+<% @questions.each_with_index do |question, index| %>
 
 	<p>Question<%= index + 1%>: <%= question.statement%> </p>
 	<p>1) <%= question.option1 %></p>
@@ -15,11 +32,13 @@
 
 	<% end %>
 
+<!-- <form action = "/quizzes/score" method="POST">
+
+	
+
 	
 	<input type = "hidden" name="score" value = "<%= @score %>" >
 	<input type = "hidden" name="change" value = "<%= @change %>" >
 	<input type = "hidden" name="category" value = "<%= @category_id %>" >
-	<h2>
-		<input class = "btn btn-primary" type="submit" value="Check Your Score">
-	</h2>
-</form>
+	
+</form> -->

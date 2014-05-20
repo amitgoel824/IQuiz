@@ -1,9 +1,33 @@
 <h2>Choose a Category</h2>
-<h2>
+<!-- <h2>
 	<% @categories.each do |category| %>
+	<%= image_tag(category.image_url) %>
 	<form   action="/quizzes/questions" method="POST">
 		<button class = "btn btn-primary" type="submit" name="category" value="<%= category.id %>"><%=category.name%></button>
 	</form>
 	<br>
 	<% end %>
-</h2>
+</h2> -->
+
+<div class="row">
+	<% @categories.each do |category| %>
+	<div class="col-md-4"><%= image_tag(category.image_url) %>
+		<h2>
+			<form   action="/quizzes/questions" method="POST">
+				<button class = "btn btn-primary" type="submit" name="category" value="<%= category.id %>"><%=category.name%></button>
+			</form>
+		</h2>
+	</div>
+	<% end %>
+	
+</div>
+
+<!-- <div class="row">
+
+	<div class="col-md-4"><%= image_tag("books.png") %>
+		<form   action="/quizzes/questions" method="POST">
+			<button class = "btn btn-primary" type="submit" name="category" value="3">Books</button>
+		</form>
+	</div>
+
+</div> -->
