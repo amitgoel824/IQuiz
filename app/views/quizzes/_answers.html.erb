@@ -1,0 +1,14 @@
+<h2>Answers</h2>
+
+
+<% @ques.each_with_index do |question, index| %>
+
+	<p>Question<%= index + 1%>: <%= question.statement%> </p>
+	<p>1) <%= question.option1 %></p>
+	<p>2) <%= question.option2 %></p>
+	<p>3) <%= question.option3 %></p>
+	<p>4) <%= question.option4 %></p>
+	<p>Answer: Option <%= question.answer %></p>
+	<hr>
+
+	<% end %>

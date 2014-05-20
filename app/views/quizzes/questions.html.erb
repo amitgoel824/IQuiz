@@ -1,131 +1,13 @@
 
-<h1><%= Category.find(@category_id).name %> Quiz
-</h1>
+<h1><%= Category.find(@category_id).name %> Quiz</h1>
 <form action = "/quizzes/answers" method="POST">
 
-    <div class="panel-group" id="accordion">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-              Part #1 (10 points each)
-          </a>
-      </h4>
-  </div>
-  <div id="collapseOne" class="panel-collapse collapse in">
-      <div class="panel-body">
-        <% @questions1.each_with_index do |question, index| %>
+    <%= render partial: "quizQuestions" , :locals => {:@ques1 => @questions1 , :@ques2 => @questions2 } %>
 
-        <p>Question<%= index + 1%>: <%= question.statement%> </p>
-        <div class="row">
-
-            <div class="col-md-6"><input type="radio" name= "ans<%= index + 1%>" value= 1 >   <%= question.option1 %>
-            </div>
-            <div class="col-md-6"><input type="radio" name= "ans<%= index + 1%>" value= 2 >   <%= question.option2 %>
-            </div>
-            <div class="col-md-6"><input type="radio" name= "ans<%= index + 1%>" value= 3 >   <%= question.option3 %>
-            </div>
-            <div class="col-md-6"><input type="radio" name= "ans<%= index + 1%>" value= 4 >   <%= question.option4 %>
-            </div>
-
-        </div>
-        <input type = "hidden" name="question_id<%=index+1%>" value = "<%= question.id %>" >
-        <hr>
-
-        <% end %>
-    </div>
-</div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-          Part #2 (20 points each)
-      </a>
-  </h4>
-</div>
-<div id="collapseTwo" class="panel-collapse collapse">
-  <div class="panel-body">
-    <% @questions2.each_with_index do |question, index| %>
-
-    <p>Question<%= index + 1+ @number_of_questions_part1 %>: <%= question.statement%> </p>
-    <div class="row">
-
-        <div class="col-md-6"><input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1%>" value= 1 >   <%= question.option1 %>
-        </div>
-        <div class="col-md-6"><input type="radio" name= "ans<%= index + 1+ @number_of_questions_part1%>" value= 2 >   <%= question.option2 %>
-        </div>
-        <div class="col-md-6"><input type="radio" name= "ans<%= index + 1+ @number_of_questions_part1%>" value= 3 >   <%= question.option3 %>
-        </div>
-        <div class="col-md-6"><input type="radio" name= "ans<%= index + 1+ @number_of_questions_part1%>" value= 4 >   <%= question.option4 %>
-        </div>
-
-    </div>
-    <input type = "hidden" name="question_id<%=index+1 + @number_of_questions_part1%>" value = "<%= question.id %>" >
-    <hr>
-
-    <% end %>
-</div>
-</div>
-</div>
-
-</div>
-
-
-<input type = "hidden" name="category" value = "<%= @category_id %>" >
-<h2>
-    <input class = "btn btn-primary"type="submit" value="Submit and View Answers">
-</h2>
+    <input type = "hidden" name="category" value = "<%= @category_id %>" >
+    <h2>
+        <input class = "btn btn-primary"type="submit" value="Submit and View Answers">
+    </h2>
 </form>
 
 
-<!-- <html>
-<head>
-</head>
-
-<body>
-
-    <h1><%= Category.find(@category_id).name %> Quiz</h1>
-
-
-    <form action = "/quizzes/answers" method="POST">
-
-        <h3>10 points each</h3>
-        <h2>Part-1 </h2>
-
-        <% @questions1.each_with_index do |question, index| %>
-
-        <p>Question<%= index + 1%>: <%= question.statement%> </p>
-        <input type="radio" name= "ans<%= index + 1%>" value= 1 ><%= question.option1 %><br>
-        <input type="radio" name= "ans<%= index + 1%>" value= 2 ><%= question.option2 %><br>
-        <input type="radio" name= "ans<%= index + 1%>" value= 3 ><%= question.option3 %><br>
-        <input type="radio" name= "ans<%= index + 1%>" value= 4 ><%= question.option4 %><br>
-        <input type = "hidden" name="question_id<%=index+1%>" value = "<%= question.id %>" >
-        <hr>
-
-        <% end %>
-
-        <h3>20 points each</h3>
-        <h2>Part-2 </h2>
-
-        <% @questions2.each_with_index do |question, index| %>
-
-        <p>Question<%= index + 1+ @number_of_questions_part1 %>: <%= question.statement%> </p>
-        <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 1 ><%= question.option1 %><br>
-        <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 2 ><%= question.option2 %><br>
-        <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 3 ><%= question.option3 %><br>
-        <input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1 %>" value= 4 ><%= question.option4 %><br>
-        <input type = "hidden" name="question_id<%=index+1 + @number_of_questions_part1%>" value = "<%= question.id %>" >
-        <hr>
-
-        <% end %>
-
-
-        <input type = "hidden" name="category" value = "<%= @category_id %>" >
-        <h2>
-            <input class = "btn btn-primary"type="submit" value="View Answers">
-        </h2>
-    </form>
-
-</body>
-</html> -->

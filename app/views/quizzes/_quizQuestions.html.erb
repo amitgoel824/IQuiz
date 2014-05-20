@@ -1,0 +1,67 @@
+<div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              Part #1 (10 points each)
+          </a>
+      </h4>
+  </div>
+  <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <% @ques1.each_with_index do |question, index| %>
+
+        <p>Question<%= index + 1%>: <%= question.statement%> </p>
+        <div class="row">
+
+            <div class="col-md-6"><input type="radio" name= "ans<%= index + 1%>" value= 1 >   <%= question.option1 %>
+            </div>
+            <div class="col-md-6"><input type="radio" name= "ans<%= index + 1%>" value= 2 >   <%= question.option2 %>
+            </div>
+            <div class="col-md-6"><input type="radio" name= "ans<%= index + 1%>" value= 3 >   <%= question.option3 %>
+            </div>
+            <div class="col-md-6"><input type="radio" name= "ans<%= index + 1%>" value= 4 >   <%= question.option4 %>
+            </div>
+
+        </div>
+        <input type = "hidden" name="question_id<%=index+1%>" value = "<%= question.id %>" >
+        <hr>
+
+        <% end %>
+    </div>
+</div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Part #2 (20 points each)
+      </a>
+  </h4>
+</div>
+<div id="collapseTwo" class="panel-collapse collapse">
+  <div class="panel-body">
+    <% @ques2.each_with_index do |question, index| %>
+
+    <p>Question<%= index + 1+ @number_of_questions_part1 %>: <%= question.statement%> </p>
+    <div class="row">
+
+        <div class="col-md-6"><input type="radio" name= "ans<%= index + 1 + @number_of_questions_part1%>" value= 1 >   <%= question.option1 %>
+        </div>
+        <div class="col-md-6"><input type="radio" name= "ans<%= index + 1+ @number_of_questions_part1%>" value= 2 >   <%= question.option2 %>
+        </div>
+        <div class="col-md-6"><input type="radio" name= "ans<%= index + 1+ @number_of_questions_part1%>" value= 3 >   <%= question.option3 %>
+        </div>
+        <div class="col-md-6"><input type="radio" name= "ans<%= index + 1+ @number_of_questions_part1%>" value= 4 >   <%= question.option4 %>
+        </div>
+
+    </div>
+    <input type = "hidden" name="question_id<%=index+1 + @number_of_questions_part1%>" value = "<%= question.id %>" >
+    <hr>
+
+    <% end %>
+</div>
+</div>
+</div>
+
+</div>
